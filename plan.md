@@ -1,6 +1,7 @@
 # Plan
 
 Table of Contents
+* Game Goals
 * What Data is Needed
 * How Data Will Change
 * Types of Data Queries
@@ -9,6 +10,12 @@ Table of Contents
 
 
 
+
+
+## Game Goals
+* Be able to save a game and replay the move sequence later
+    * pause a game and come back?
+* Have different types of controllers, e.g. AI, sequence of moves in a file, human player
 
 
 
@@ -26,7 +33,6 @@ Table of Contents
 
 
 
-
 ## How Data Will Change
 Immutable data
 * configuraiton
@@ -39,12 +45,12 @@ Snake segments
 Apple position
 * position changes after snake east apple, replace with apple in empty cell
 
-Game State
+Game States
 * Player starts game    user input: menu -> playing
 * Player quits game     user input: menu, won, lost, playing -> quit
 * Player restarts game  user input: won, lost, playing -> menu/playing (undecided)
-* Player wins game      game play: playing -> won
-* Player loses game     game play: playing -> lost
+* Player wins game      game play:  playing -> won
+* Player loses game     game play:  playing -> lost
 
 UI
 * game data (snake segment positions, apple position) change
@@ -74,6 +80,13 @@ Dimensions
 
 
 ## Game loop:
+* Thinking about doing somehting similar to datapath and controller architecture, with the
+  "controller" being responsible for receiving feedback in the form of the game state, and providing
+  a command signal used to update the game state
+* However, controller component (may) also controls the clock/step signal. Clock signal could also
+  be external to controller, but not sure how to do that yet.
+
+
 * get input (should think of types of inputs other than snake movements, e.g. quit, restart, ...)
 * update snake
 * update state
@@ -89,6 +102,7 @@ Dimensions
     * state queries
     * snake collision: has the snake collided with itself of the screen edge
     * game won: is board full of snake
+
 
 
 ## Snake Agent Strategy
