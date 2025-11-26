@@ -1,3 +1,4 @@
+from boardstate import BoardState
 from abc import ABC, abstractmethod
 from point import Point
 
@@ -46,3 +47,4 @@ class PathVisualiser(ABC):
     @abstractmethod
     def update(self) -> None:
         ...
+

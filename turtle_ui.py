@@ -16,7 +16,6 @@ def _make_turtle(colour: str = None, shape: str = None):
 
     return turt
 
-
 class TurtleUI(UI):
     """
     Inspired by code from https://www.geeksforgeeks.org/python/create-a-snake-game-using-turtle-in-python/

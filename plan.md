@@ -116,3 +116,33 @@ Dimensions
 * Consider how the space taken up by the snake body determines where the apple can spawn, and that
   more clear space near the snakes head gives a higher chance the apple will spawn near the snake's
   head
+
+
+## Code Structure
+
+
+action = Controller.receive_action()
+game.update(action)
+Controller.send_state(gameState, boardState)
+
+
+Controller
+    display
+    agent
+
+
+
+
+Game
+    state: State
+    seed: int           # used for random evens, e.g. apple placement
+    recording: FILE     # used to record player move sequence
+    ...
+
+
+BoardState
+    width: int
+    height: int
+
+    apple: Point | None
+    snake: Snake
