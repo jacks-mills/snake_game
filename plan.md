@@ -1,21 +1,11 @@
 # Plan
 
-Table of Contents
-* Game Goals
-* What Data is Needed
-* How Data Will Change
-* Types of Data Queries
-* Game loop
-* Snake agent strategies
-
-
-
-
-
 ## Game Goals
 * Be able to save a game and replay the move sequence later
     * pause a game and come back?
 * Have different types of controllers, e.g. AI, sequence of moves in a file, human player
+
+
 
 
 
@@ -30,6 +20,8 @@ Table of Contents
 * game state (menu, playing, won, lost, quit)
 * last movement input (before step)
 * ui state (whats displayed)
+
+
 
 
 
@@ -60,6 +52,8 @@ Last Movement Input
 
 
 
+
+
 ## Types of Data Queries
 configuration
 * what value does each configuration option have
@@ -79,7 +73,8 @@ Dimensions
 
 
 
-## Game loop:
+
+## Game loop
 * Thinking about doing somehting similar to datapath and controller architecture, with the
   "controller" being responsible for receiving feedback in the form of the game state, and providing
   a command signal used to update the game state
@@ -105,6 +100,8 @@ Dimensions
 
 
 
+
+
 ## Snake Agent Strategy
 * hamiltonian path: path that goes through each point, snake cannot die, collide with itself or the
   walls, if on this path
@@ -118,7 +115,15 @@ Dimensions
   head
 
 
+
+
+
 ## Code Structure
+
+BoardState
+
+Controller (?)
+
 
 
 action = Controller.receive_action()
@@ -126,9 +131,7 @@ game.update(action)
 Controller.send_state(gameState, boardState)
 
 
-Controller
-    display
-    agent
+
 
 
 
