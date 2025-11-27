@@ -1,7 +1,7 @@
 from boardstate import BoardState
 from turtle_ui import TurtleUI
 from ui import UI
-from snake import Heading
+from snake import Snake, Heading
 
 class PlayerController:
     ui: TurtleUI
@@ -25,7 +25,9 @@ class PlayerController:
         self.ui.screen.onkeypress(self.down, "Down")
         self.ui.screen.onkeypress(self.left, "Left")
         self.ui.screen.onkeypress(self.right, "Right")
-        self.ui.screen.onkeypress(self.ui.screen.bye, "q")
+
+        self.ui.screen.onkeypress(self.quit, "q")
+        self.ui.screen.onkeypress(self.reset, "r")
         self.ui.screen.listen()
 
     def up(self) -> None:
@@ -40,11 +42,16 @@ class PlayerController:
     def right(self) -> None:
         self._move(Heading.EAST)
 
+    def quit(self) -> None:
+        self.ui.screen.bye()
+
+    def reset(self) -> None:
+
     def _move(self, heading: Heading) -> None:
         self.newHeading = heading
         if self.started == False:
             self.started = True
-            self.board.snake._heading = self.newHeading  # based abstraction breaking
+            self.board.snake._heading = heading
             self.newHeading = None
             self.step()
 
