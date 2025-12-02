@@ -1,6 +1,5 @@
-from boardstate import BoardState
+from board import Board, Point
 from abc import ABC, abstractmethod
-from point import Point
 
 class UI(ABC):
     """
@@ -8,7 +7,7 @@ class UI(ABC):
     """
 
     @abstractmethod
-    def draw_apple(self, x: int, y: int) -> None:
+    def draw_fruit(self, x: int, y: int) -> None:
         ...
 
     @abstractmethod

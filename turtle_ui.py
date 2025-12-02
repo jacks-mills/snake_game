@@ -1,6 +1,6 @@
 from turtle import Turtle, Screen
 from ui import UI, PathVisualiser
-from point import Point
+from board import Point
 
 def _make_turtle(colour: str = None, shape: str = None):
     turt = Turtle()
@@ -27,7 +27,7 @@ class TurtleUI(UI):
     SNAKE_SHAPE: tuple[tuple[float, float], ...] = ((-0.5, -0.5), (0.5, -0.5), (0.5, 0.5), (-0.5, 0.5))
 
     visibleStamps: dict[tuple[int, int], tuple[Turtle, int]]
-    apple: Turtle
+    fruit: Turtle
     head: Turtle
     body: Turtle
 
@@ -35,7 +35,7 @@ class TurtleUI(UI):
 
     def __init__(self, width: int, height: int) -> None:
         self.visibleStamps = {}
-        self.apples = []
+        self.fruits = []
         self.heads = []
         self.bodies = []
 
@@ -55,15 +55,15 @@ class TurtleUI(UI):
                 -screenWidth/2 + xShift, -screenHeight/2 + yShift, 
                  screenWidth/2 + xShift,  screenHeight/2 + yShift)
 
-        appleShape = tuple((x * self.CELL_SIZE, y * self.CELL_SIZE) for x, y in self.APPLE_SHAPE)
+        fruitShape = tuple((x * self.CELL_SIZE, y * self.CELL_SIZE) for x, y in self.APPLE_SHAPE)
         headShape = tuple((x * self.CELL_SIZE, y * self.CELL_SIZE) for x, y in self.SNAKE_SHAPE)
         bodyShape = headShape
 
-        self.screen.register_shape("apple", appleShape)
+        self.screen.register_shape("fruit", fruitShape)
         self.screen.register_shape("head", headShape)
         self.screen.register_shape("body", bodyShape)
 
-        self.apple = _make_turtle("red", "apple")
+        self.fruit = _make_turtle("red", "fruit")
         self.head = _make_turtle("white", "head")
         self.body = _make_turtle("orange", "body")
 
@@ -72,8 +72,8 @@ class TurtleUI(UI):
         self.screen.listen()
         self.screen.update()
 
-    def draw_apple(self, x: int, y: int) -> None:
-        self._draw_entity(self.apple, x, y)
+    def draw_fruit(self, x: int, y: int) -> None:
+        self._draw_entity(self.fruit, x, y)
 
     def draw_snake_head(self, x: int, y: int) -> None:
         self._draw_entity(self.head, x, y)

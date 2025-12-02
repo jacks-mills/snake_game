@@ -1,21 +1,9 @@
 from player_controller import PlayerController
-from boardstate import BoardState
-from turtle_ui import TurtleUI
+from config import CONFIG
 
 def main():
-    WIDTH = 10
-    HEIGHT = 10
-    MILLISECONDS_PER_FRAME = 250
-
-    board = BoardState(WIDTH, HEIGHT)
-    ui = TurtleUI(WIDTH, HEIGHT)
-
-    controller = PlayerController(ui, board, MILLISECONDS_PER_FRAME)
-
-    ui.screen.mainloop()
-
-        
-
+    controller = PlayerController(CONFIG)
+    controller.mainloop()
 
 
 if __name__ == "__main__":
